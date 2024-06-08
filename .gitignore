@@ -20,4 +20,4 @@ server.code-workspace
 *.log
 *.sqlite
 *.css.map
-
+/public/storage/owner/image/template/*.png

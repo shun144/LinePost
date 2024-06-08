@@ -55,9 +55,11 @@
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('plugins/toastr/css/2.1.4/toastr.min.css')}}">
 <link rel="stylesheet" href="{{ asset('build/assets/delivery.css')}}">
 @stop
 
 @section('js')
+<script src="{{ asset('plugins/toastr/js/2.1.4/toastr.min.js')}}"></script>
 <script src="{{ asset('build/assets/delivery.js')}}" defer></script>
 @stop
