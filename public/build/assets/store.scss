@@ -1,0 +1,122 @@
+@use "mixin" as *;
+@use "variables" as *;
+@import "common";
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 店舗情報一覧画面
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.store {
+	width: 95%;
+	margin: 0.6rem auto;
+}
+
+@include mq(tab) {
+  .store {
+    width: 99%;
+  }
+}
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 店舗追加ボタン
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.store-add {
+  --btn-color: rgb(4, 161, 4);
+
+  .btn {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    border: 2px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    transition: 0.5s;
+    opacity: 0.9;
+    &:hover {
+      color: var(--btn-color);
+      background: #fff;
+    }
+  }
+
+  @include mq(sp) {
+    .btn {
+      font-size: 0.8rem;
+      padding: 8px;
+    }
+  }
+}
+
+
+
+
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 店舗一覧テーブル
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.store-table {
+
+  // 操作ボタン
+  .op-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form:first-child {
+    border-right: 1px dotted #666;
+  }
+
+  td:has(.op-btn ) {
+    padding: 0.75rem 0rem;
+  }
+
+  .btn-del{
+    &:hover i {
+      color: red !important;
+    }
+  }
+
+  .btn-edit{
+    &:hover i {
+      color: rgb(62, 62, 255) !important;
+    }
+  }
+}
+
+@include mq(tab) {
+  th:nth-last-child(-n+2),
+  td:nth-last-child(-n+2) {
+    visibility: collapse;
+    display: none;
+  }
+}
+
+@include mq(tab) {
+  .op-btn {
+    button {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    i {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@include mq(sp) {
+  .store-table {
+    td:has(.op-btn ) {
+      padding: 0.55rem 0rem;
+    }
+    .op-btn {   
+      button {
+        padding-right: 0.3rem;
+        padding-left: 0.3rem;
+      }
+      i {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

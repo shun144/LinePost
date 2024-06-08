@@ -1,0 +1,23 @@
+@use "mixin" as *;
+@use "variables" as *;
+@import "common";
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 配信詳細画面
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.posthistoryinfo {
+	width: 70%;
+	margin: 0.6rem auto;
+}
+
+@include mq(tab) {
+  .posthistoryinfo {
+    width: 95%;
+  }
+}
+
+@include mq(sp) {
+  .posthistoryinfo {
+    width: 99%;
+  }
+}

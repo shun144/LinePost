@@ -1,27 +1,39 @@
 
 @extends('adminlte::page')
 
-@section('title','店舗情報編集')
+@section('title','店舗編集')
 
 @section('content_header')
-    <h1>店舗情報編集</h1>
+    <h2>店舗編集</h2>
 @stop
 
 @section('content')
 
 
-<div class="mx-auto pb-5" style="width:60rem">
+<div class="storeedit">
 
-  <div class="text-left">
-    <a href="{{route('admin.store')}}" class="h5">
+  <div class="back">
+    <a href="{{route('admin.store')}}">
         <i class="fas fa-arrow-left"></i>
         <span>店舗情報一覧に戻る</span>
     </a>
   </div>
-  <div class="card card-info">
+
+
+  <div class="card card-custom">
+
     <div class="card-header">
-      <h3 class="card-title">店舗情報編集フォーム</h3>
+      <div class="row">
+        <div class="col-md-10 d-flex align-items-center">
+          <h3 class="card-title">店舗編集フォーム</h3>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-end">
+          <button form="formEditStore" type="submit" class="btn">更新</button>
+        </div>
+      </div>
     </div>
+
     <div class="card-body">
       <form id="formEditStore" action="{{ route('store.edit') }}" method="post" enctype="multipart/form-data" onSubmit="return confirmEdit(event)">
         @csrf
@@ -87,9 +99,7 @@
 
       </form>
     </div>
-    <div class="card-footer bg-transparent">
-      <button form="formEditStore" type="submit" class="btn btn-primary">更新</button>
-    </div>
+
   </div>
 </div>
 
@@ -98,6 +108,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/2.1.4/toastr.min.css')}}">
+<link rel="stylesheet" href="{{ asset('build/assets/storeedit.css')}}">
 @stop
 
 @section('js')

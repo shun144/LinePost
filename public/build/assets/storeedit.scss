@@ -1,0 +1,61 @@
+@use "mixin" as *;
+@use "variables" as *;
+@import "common";
+
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 店舗編集画面
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.storeedit {
+	width: 60%;
+	margin: 0.6rem auto 0;
+}
+
+@include mq(tab) {
+  .storeedit {
+    width: 99%;
+  }
+}
+
+.form-group {
+  margin-bottom: 2.2rem;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 店舗更新ボタン
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.card {
+  --btn-color: rgb(4, 161, 4);
+
+  .btn {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    border: 2px solid var(--btn-color);
+    background: var(--btn-color);
+    color: #fff;
+    transition: 0.5s;
+    opacity: 0.9;
+    &:hover {
+      color: var(--btn-color);
+      background: #fff;
+    }
+  }
+
+  @include mq(sp) {
+    .btn {
+      font-size: 0.8rem;
+      padding: 8px;
+    }
+  }
+}
+
+
+
+

@@ -19,4 +19,5 @@ yarn-error.log
 server.code-workspace
 *.log
 *.sqlite
+*.css.map
 

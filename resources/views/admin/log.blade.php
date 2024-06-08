@@ -3,45 +3,38 @@
 @section('title','ログファイル一覧')
 
 @section('content_header')
-    <h1>ログファイル一覧</h1>
+    <h2>ログファイル一覧</h2>
 @stop
 
 @section('content')
-<div class="mx-auto pb-5" style="width:40rem">
-  <div class="card">
-    {{-- <div class="card-header">
-      <a href="{{route('store.add.view')}}" class="btn btn-success">店舗追加</a>
-    </div> --}}
 
-    <div class="card-body">
-      <table id="log_table" class="table table-striped table-bordered" style="table-layout:fixed;">
-        <thead>
-          <tr>
-            @foreach (array("DL","ログファイル名") as $col)
-            <th class="text-center">{{$col}}</th>
-            @endforeach
-          </tr>
-        </thead>
-        <tbody>
 
-          @if (isset($logFiles))
-            @foreach ($logFiles as $logFile)
-            <tr>          
-              <td>
-                <div class="row justify-content-around">
-                  <a class="fas fa-download text-muted" href="{{$logFile}}" download></a>
-                </div>
-              </td>
-              <td class="omit_text">{{basename($logFile)}}</td>            
-            </tr>
-            @endforeach
-          @endif
+<div class="log">
+  <table id="log_table" class="table table-striped table-bordered" style="table-layout:fixed;">
+    <thead>
+      <tr>
+        @foreach (array("DL","ログファイル名") as $col)
+        <th class="text-center">{{$col}}</th>
+        @endforeach
+      </tr>
+    </thead>
+    <tbody>
 
-        </tbody>
+      @if (isset($logFiles))
+        @foreach ($logFiles as $logFile)
+        <tr>          
+          <td>
+            <div class="row justify-content-around">
+              <a class="fas fa-download text-muted" href="{{$logFile}}" download></a>
+            </div>
+          </td>
+          <td class="omit_text">{{basename($logFile)}}</td>            
+        </tr>
+        @endforeach
+      @endif
 
-      </table>
-    </div>
-  </div>
+    </tbody>
+  </table>
 </div>
 
 
@@ -52,7 +45,8 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/2.1.4/toastr.min.css')}}">
-<link rel="stylesheet" href="{{ asset('build/assets/component.min.css')}}">
+<link rel="stylesheet" href="{{ asset('build/assets/log.css')}}">
+{{-- <link rel="stylesheet" href="{{ asset('build/assets/component.min.css')}}"> --}}
 {{-- @vite(['resources/sass/component.scss']) --}}
 
 <style>
@@ -86,7 +80,7 @@
       autoWidth: false,
       responsive:false,
       columnDefs:[
-        { targets:0, width:50}
+        { targets:0, width:"10%"}
       ],
       // drawCallback: function(){
       //   $(".dataTables_info").appendTo("#store_table_wrapper>.row:first-of-type>div:first-of-type");
