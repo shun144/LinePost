@@ -101,6 +101,36 @@ table td.omit_text {
     margin-bottom: 0.5rem;
   }
 }
+.custom-form-area {
+  padding-bottom: 2rem;
+}
+.custom-form-area .form-group {
+  margin-bottom: 2.5rem;
+}
+.custom-form-area .form-group:last-child {
+  margin-bottom: 0px;
+}
+.custom-form-area label {
+  margin-bottom: 0.1rem;
+  color: #666;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area small {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area .form-control {
+  border-radius: 0%;
+}
+.custom-form-area img {
+  max-width: 50%;
+  max-height: 18rem;
+  border: 1px solid #dadada;
+}
+
 .card-custom .card-header {
   background-color: #394656;
   color: #fff;
@@ -132,7 +162,8 @@ table td.omit_text {
 
 .posthistoryinfo {
   width: 70%;
-  margin: 0.6rem auto;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -144,4 +175,4 @@ table td.omit_text {
   .posthistoryinfo {
     width: 99%;
   }
-}/*# sourceMappingURL=posthistoryinfo.css.map */
+}

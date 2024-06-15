@@ -101,6 +101,36 @@ table td.omit_text {
     margin-bottom: 0.5rem;
   }
 }
+.custom-form-area {
+  padding-bottom: 2rem;
+}
+.custom-form-area .form-group {
+  margin-bottom: 2.5rem;
+}
+.custom-form-area .form-group:last-child {
+  margin-bottom: 0px;
+}
+.custom-form-area label {
+  margin-bottom: 0.1rem;
+  color: #666;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area small {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area .form-control {
+  border-radius: 0%;
+}
+.custom-form-area img {
+  max-width: 50%;
+  max-height: 18rem;
+  border: 1px solid #dadada;
+}
+
 .card-custom .card-header {
   background-color: #394656;
   color: #fff;
@@ -133,6 +163,7 @@ table td.omit_text {
 .lineuser {
   width: 70%;
   margin: 0.6rem auto;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -212,7 +243,23 @@ label {
     font-size: 0.9rem;
   }
 }
-#line_user_status_loader {
+.omit_text:has(.btn-st-change) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-st-change {
+  color: red;
+}
+.btn-st-change:hover {
+  color: red;
+}
+.btn-st-change.is-valid {
+  color: blue;
+}
+
+.status-loader {
   display: none;
   position: fixed;
   width: 100%;
@@ -222,31 +269,34 @@ label {
   background: rgba(255, 255, 255, 0.9);
   z-index: 99;
 }
-#line_user_status_loader .loading {
+.status-loader.view {
+  display: block;
+}
+.status-loader .loading {
   position: absolute;
   top: 40%;
   left: 50%;
 }
-#line_user_status_loader .loading .loading-bar {
+.status-loader .loading .loading-bar {
   display: inline-block;
   width: 4px;
   height: 18px;
   border-radius: 4px;
   animation: loading 1s ease-in-out infinite;
 }
-#line_user_status_loader .loading .loading-bar:nth-child(1) {
+.status-loader .loading .loading-bar:nth-child(1) {
   background-color: #3498db;
   animation-delay: 0;
 }
-#line_user_status_loader .loading .loading-bar:nth-child(2) {
+.status-loader .loading .loading-bar:nth-child(2) {
   background-color: #c0392b;
   animation-delay: 0.09s;
 }
-#line_user_status_loader .loading .loading-bar:nth-child(3) {
+.status-loader .loading .loading-bar:nth-child(3) {
   background-color: #f1c40f;
   animation-delay: 0.18s;
 }
-#line_user_status_loader .loading .loading-bar:nth-child(4) {
+.status-loader .loading .loading-bar:nth-child(4) {
   background-color: #27ae60;
   animation-delay: 0.27s;
-}/*# sourceMappingURL=lineuser.css.map */
+}

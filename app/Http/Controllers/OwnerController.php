@@ -128,7 +128,7 @@ class OwnerController extends Controller
 
 
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-    // 連携LINE友だち一覧表示
+    // 連携LINEユーザ一覧表示
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
     public function viewLineUsers()
     {
@@ -159,45 +159,56 @@ class OwnerController extends Controller
             return view('owner.line_users', compact('lines', 'reg_url', 'valid_count', 'invalid_count'));
         }
         catch (\Exception $e) {
-            \Log::error('エラー機能:連携LINE友だち一覧表示 【店舗ID:'.Auth::user()->store_id.'】');
+            \Log::error('エラー機能:連携LINEユーザ一覧表示 【店舗ID:'.Auth::user()->store_id.'】');
             \Log::error('エラー箇所:'.$e->getFile().'【'.$e->getLine().'行目】');
             \Log::error('エラー内容:'.$e->getMessage());
 
-            $get_lineuser_error_flushMsg = '連携LINE友だち一覧取得に失敗しました';
+            $get_lineuser_error_flushMsg = '連携LINEユーザ一覧取得に失敗しました';
             return view('owner.line_users', compact('get_lineuser_error_flushMsg'));
         }
     }
 
 
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-    // 連携LINE友だち更新
+    // 連携LINEユーザ状態更新
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
     public function updateLineUser(Request $request)
     {
-        $post = $request->only(['line_user_id','new_valid']);
+        $post = $request->only(['line_user_id','is-valid']);
 
-        try {
+        $new_valid = $post['is-valid'] == 1 ? 0 : 1;
+
+         try {
             $now = Carbon::now();
             DB::table('lines')
             ->where('id',$post['line_user_id'])
             ->update([
-                'is_valid' => $post['new_valid'],
+                'is_valid' => $new_valid,
                 'updated_at' => $now
                 ]
             );
-            return redirect(route('owner.line_users'));
+
+            return response()->json([
+                'status' => 'success',
+                'message' => $new_valid == 1 ? '有効化が完了しました' : '無効化が完了しました',
+                'newValid' => $new_valid,
+            ], 200);
+
         }
         catch (\Exception $e) {
-            \Log::error('エラー機能:連携LINE友だち更新 【店舗ID:'.Auth::user()->store_id.'/LINEユーザID:'.$post['line_user_id'].'】');
+            \Log::error('エラー機能:連携LINEユーザ状態更新 【店舗ID:'.Auth::user()->store_id.'/LINEユーザID:'.$post['line_user_id'].'】');
             \Log::error('エラー箇所:'.$e->getFile().'【'.$e->getLine().'行目】');
             \Log::error('エラー内容:'.$e->getMessage());
 
-            return redirect(route('owner.line_users'))->with('edit_lineuser_error_flushMsg','連携LINE友だち更新に失敗しました');
+            return response()->json([
+                'status' => 'error',
+                'message' => $new_valid == 1 ? '有効化に失敗しました' : '無効化に失敗しました'
+            ], 500);
         }
     }
 
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-    // 退会済み友達更新
+    // 退会済みLINEユーザ無効化
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
     public function updateStatusLineUser(Request $request)
     {
@@ -212,7 +223,7 @@ class OwnerController extends Controller
 
             $store_id = Auth::user()->store_id;
 
-            // 有効なLINE友だちのみ取得
+            // 有効なLINEユーザのみ取得
             $lines = DB::table('lines')
             ->select('id','token')
             ->whereNull('deleted_at')
@@ -220,9 +231,9 @@ class OwnerController extends Controller
             ->where('is_valid', 1)
             ->get();
 
-            // 有効なLINE友だちが0件のため処理終了
+            // 有効なLINEユーザが0件のため処理終了
             if ($lines->count() == 0){
-                return redirect(route('owner.line_users'))->with('edit_lineuser_success_flushMsg','有効なLINE友だちが0件のため更新せず終了しました');
+                return redirect(route('owner.line_users'))->with('edit_lineuser_success_flushMsg','有効なLINEユーザが0件のため更新せず終了しました');
             }
 
 
@@ -298,22 +309,13 @@ class OwnerController extends Controller
                 Batch::update($lineInstance, $chunk, $index);
             }
             
-            // foreach($upd_user_list as $upd_user){
-            //     DB::table('lines')
-            //     ->where('id',$upd_user['id'])
-            //     ->update([
-            //         'is_valid' => $upd_user['is_valid'],
-            //         'updated_at' => $upd_user['updated_at']
-            //         ]
-            //     );          
-            // }
-            return redirect(route('owner.line_users'))->with('edit_lineuser_success_flushMsg','退会済み友達更新が完了しました');
+            return redirect(route('owner.line_users'))->with('edit_lineuser_success_flushMsg','退会済みLINEユーザの無効化が完了しました');
         }
         catch (\Exception $e) {
-            \Log::error('エラー機能:退会済み友達更新 【店舗ID:'.Auth::user()->store_id.'】');
+            \Log::error('エラー機能:退会済みLINEユーザ無効化 【店舗ID:'.Auth::user()->store_id.'】');
             \Log::error('エラー箇所:'.$e->getFile().'【'.$e->getLine().'行目】');
             \Log::error('エラー内容:'.$e->getMessage());
-            return redirect(route('owner.line_users'))->with('edit_lineuser_error_flushMsg','退会済み友達更新に失敗しました');
+            return redirect(route('owner.line_users'))->with('edit_lineuser_error_flushMsg','退会済みLINEユーザ無効化に失敗しました');
         }
     }
 

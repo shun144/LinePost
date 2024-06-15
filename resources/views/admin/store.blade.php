@@ -9,11 +9,13 @@
 @section('content')
 
   <div class="store">
-    <div class="store-add">
-      <a href="{{route('store.add.view')}}" class="btn">店舗追加</a>
+
+
+    <div class="btn-area">
+      <a href="{{route('store.add.view')}}" class="btn btn-add-store-view">店舗登録</a>
     </div>
 
-    <div class="store-table">
+    <div class="store-table-area">
       <table id="store_table" class="table table-striped table-bordered" style="table-layout:fixed;">
         <thead>
           <tr>
@@ -24,12 +26,12 @@
         </thead>
         <tbody>
 
-
           @if (isset($stores))
             @foreach ($stores as $store)
             <tr>
               <td>
                 <div class="op-btn">
+                  {{-- <form id="store-del-form" action="{{route('store.del')}}" method="post"> --}}
                   <form action="{{route('store.del')}}" method="post" onSubmit="return confirmStoreDelete(event)">
                     @csrf
                     <button type="submit" class="btn btn-del">
@@ -38,6 +40,7 @@
                       <input type="hidden" class="hid_store_name" value={{$store->name}}>
                       <i class="fas fa-trash-alt text-muted"></i>
                     </button>
+                    <span class="btn-tooltip"></span>
                   </form>
 
                   <form action="{{route('store.edit.view')}}" method="get">
@@ -70,12 +73,7 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/2.1.4/toastr.min.css')}}">
-{{-- <link rel="stylesheet" href="{{ asset('build/assets/component.min.css')}}"> --}}
 <link rel="stylesheet" href="{{ asset('build/assets/store.css')}}">
-
-<style>
-</style>
-
 @stop
 
 @section('js')
@@ -84,7 +82,6 @@
   <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('plugins/toastr/js/2.1.4/toastr.min.js')}}"></script>
-  {{-- @vite(['resources/js/component.js']) --}}
 
 <script>      
 @if (session('flash_message'))
@@ -99,8 +96,46 @@
   $(function () {toastr.error('{{ $get_store_error_flushMsg }}');});
 @endif
 
+// const del_form = document.querySelector('#store-del-form');
+
+// del_form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const del_store_name = event.submitter.querySelector('.hid_store_name').value
+//   if (!window.confirm(`${del_store_name}を削除してよろしいですか？`)){
+//     return false;
+//   }
+
+//   // console.log(event);
+
+// });
+
+// document.querySelector('.btn-del').addEventListener('click', (event) => {
+//   event.preventDefault();
+//   // const del_store_name = event.submitter.querySelector('.hid_store_name').value
+//   // if (!window.confirm(`${del_store_name}を削除してよろしいですか？`)){
+//   //   return false;
+//   // }
+//   console.log(event.target);
+//   console.log(event.target.parentNode);
+// });
 
 
+
+// function confirmStoreDelete(e){
+//   const del_store_name = e.submitter.querySelector('.hid_store_name').value
+//   const msg = del_store_name + ' を削除してよろしいですか？'
+//   if(window.confirm(msg)){return true;return true;}
+//   else{return false;}
+// };
+
+// document.querySelector('#store-del-form').addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const del_store_name = event.submitter.querySelector('.hid_store_name').value
+//   if (!window.confirm(`${del_store_name}を削除してよろしいですか？`)){
+//     return false;
+//   }
+//   console.log('OK');
+// });
 
 function confirmStoreDelete(e){
   const del_store_name = e.submitter.querySelector('.hid_store_name').value

@@ -3,11 +3,12 @@
 @import "common";
 
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-// 配信詳細画面
+// 配信履歴詳細画面
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 .posthistoryinfo {
 	width: 70%;
-	margin: 0.6rem auto;
+	margin: 0 auto;
+  overflow: hidden;
 }
 
 @include mq(tab) {
@@ -21,3 +22,6 @@
     width: 99%;
   }
 }
+
+
+

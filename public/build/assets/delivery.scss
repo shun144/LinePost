@@ -2,9 +2,14 @@
 @use "variables" as *;
 @import "common";
 
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 配信画面
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 .delivery {
 	width: 70%;
 	margin: 0 auto;
+  overflow: hidden;
 }
 
 @include mq(tab) {
@@ -19,50 +24,50 @@
 	}
 }
 
-
-.card-header  {
-	background-color: $main_color;
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// 送信ボタン
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.btn-area {
+	margin-bottom: 0rem;
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
 }
 
-@include mq(sp) {
-	.card-header  {
-		padding: 0.5rem 0.8rem;
-	}
-}
+.btn-post {
+	--btn-color: rgb(4, 161, 4);
 
-
-
-
-@include mq(sp) {
-	.card-body  {
-		padding: 0.5rem;
-	}
-}
-
-:root {
-	--btn-color:rgb(27, 160, 51);
-}
-
-.btnPostImi {
 	text-align: center;
 	vertical-align: middle;
 	text-decoration: none;
-	padding: 5px 20px;
-	background: var(--btn-color); 
+	padding: 0.7rem 2.8rem;
+	margin-bottom: -0.8rem;
+	letter-spacing: 6px;
+	font-weight: bold;
+	border: 2px solid var(--btn-color);
+	background: var(--btn-color);
 	color: #fff;
-	transition: 0.3s;
+	font-size: 1.1rem;
+	transition: 0.5s;
+	opacity: 0.9;
 
 	&:hover {
-		font-weight: bold;
 		color: var(--btn-color); 
 		background: #fff;
 	}
 }
 
+// @include mq(sp) {
+// 	font-size: 1rem;
+// 	padding: 0.5rem 1.9rem;
+// 	margin-bottom: 1.2rem;
+// }
+
 
 
 .form-group {
-	margin-bottom: 48px;
+	margin-bottom: 3rem;
 
 	&:last-child {
 		margin-bottom: 0px;
@@ -70,36 +75,65 @@
 }
 
 label {
-	margin-bottom: 0px;
+	margin-bottom: 0.1rem;
+	color: #666;
 	user-select: none;
 }
+
 small {
 	user-select: none;
 }
 
-textarea {
-	height: 30rem!important;
-}
+.input-textarea {
+	border-radius: 0%;
+	border: none;
+	resize: vertical;
+	min-height: 30rem;
 
-@include mq(sp) {
-	textarea {
-		height: 25rem!important;
+	&.is-invalid {
+		border: 1px solid #dc3545;
 	}
 }
 
-.image_preview {
-	margin-top: 0.8rem;
+@include mq(sp) {
+	.input-textarea {
+		min-height: 25rem;
+	}
+}
+
+.img-preview {
+	margin-top: 1.2rem;
 	margin-bottom: 0px;
-}
 
-img {
-	max-width:20%;
-	border:1px solid #dadada;
-}
-
-@include mq(sp) {
-	img  {
-		max-width:30%;
+	img {
+		max-width:50%;
+		max-height: 20rem;
+		border:1px solid #dadada;
 	}
 }
 
+@include mq(sp) {
+	.img-preview {
+		margin-top: 0.8rem;
+		img {
+			max-width:80%;
+			max-height: 17rem;
+		}
+	}
+}
+
+
+
+.btn-group {
+	.btn {
+		border-radius: 0%;
+	}
+}
+
+.img-name-text {
+	border-radius: 0%;
+	margin-left: 0.5rem;
+	&:focus {
+		border-color: #ced4da;
+	}
+}

@@ -8,6 +8,7 @@
 .store {
 	width: 95%;
 	margin: 0.6rem auto;
+  overflow: hidden;
 }
 
 @include mq(tab) {
@@ -19,42 +20,72 @@
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 // 店舗追加ボタン
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-.store-add {
-  --btn-color: rgb(4, 161, 4);
+.btn-add-store-view {
+	--btn-color: rgb(4, 161, 4);
 
-  .btn {
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: bold;
-    border: 2px solid var(--btn-color);
-    background: var(--btn-color);
-    color: #fff;
-    transition: 0.5s;
-    opacity: 0.9;
-    &:hover {
-      color: var(--btn-color);
-      background: #fff;
-    }
-  }
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	padding: 0.7rem 2.8rem;
+	letter-spacing: 6px; 
+	font-weight: bold; 
+	border: 2px solid var(--btn-color); 
+	background: var(--btn-color); 
+	color: #fff; 
+	font-size: 1.1rem; 
+	transition: 0.5s; 
+	opacity: 0.9; 
 
-  @include mq(sp) {
-    .btn {
-      font-size: 0.8rem;
-      padding: 8px;
-    }
+	&:hover { 
+		color: var(--btn-color);
+		background: #fff;
+	}
+}
+
+@include mq(sp) {
+  .btn-add-store-view {
+    font-size: 1rem;
+    padding: 0.5rem 1.9rem;
   }
 }
 
 
+// // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// // 店舗追加ボタン
+// // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// .store-add {
+//   --btn-color: rgb(4, 161, 4);
 
+//   .btn {
+//     text-align: center;
+//     vertical-align: middle;
+//     text-decoration: none;
+//     padding: 10px;
+//     font-weight: bold;
+//     border: 2px solid var(--btn-color);
+//     background: var(--btn-color);
+//     color: #fff;
+//     transition: 0.5s;
+//     opacity: 0.9;
+//     &:hover {
+//       color: var(--btn-color);
+//       background: #fff;
+//     }
+//   }
+
+//   @include mq(sp) {
+//     .btn {
+//       font-size: 0.8rem;
+//       padding: 8px;
+//     }
+//   }
+// }
 
 
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 // 店舗一覧テーブル
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-.store-table {
+.store-table-area {
 
   // 操作ボタン
   .op-btn {

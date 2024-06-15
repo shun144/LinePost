@@ -6,6 +6,7 @@ h2 {
 	font-size: 1.4em;
 	font-weight: 600;
 	color: #636363b8;
+	// color: #f9f9f9b8;
 	letter-spacing:0.1em;
 }
 
@@ -105,6 +106,43 @@ table {
   .back {
     margin-bottom: 0.5rem;
   }
+}
+
+
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+// カスタムフォームエリア
+// /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+.custom-form-area {
+
+	padding-bottom:2rem;
+
+	.form-group {
+		margin-bottom: 2.5rem;
+	
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
+	
+	label {
+		margin-bottom: 0.1rem;
+		color: #666;
+		user-select: none;
+	}
+	
+	small {
+		user-select: none;
+	}
+	
+	.form-control {
+		border-radius: 0%;
+	}
+
+	img {
+		max-width:50%;
+		max-height: 18rem;
+		border:1px solid #dadada;
+	}
 }
 
 

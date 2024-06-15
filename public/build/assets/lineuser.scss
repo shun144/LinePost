@@ -3,14 +3,13 @@
 @import "common";
 
 
-
-
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 // LINE連携一覧画面
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 .lineuser {
 	width: 70%;
 	margin: 0.6rem auto;
+  overflow: hidden;
 }
 
 @include mq(tab) {
@@ -109,10 +108,31 @@ label {
 }
 
 
+.omit_text:has(.btn-st-change) {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.btn-st-change {
+
+  color: red;
+
+  &:hover {
+    color: red;
+  }
+
+  &.is-valid {
+    color: blue;
+  }
+}
+
+
+
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
 // ローダー
 // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-#line_user_status_loader {
+.status-loader {
   @include loader;
 }
 

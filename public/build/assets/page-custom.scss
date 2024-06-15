@@ -1,0 +1,72 @@
+
+@use "mixin" as *;
+@use "variables" as *;
+
+:root {
+  --bg-color:#f4f6f9;
+  --side-color:#e6e8eb;
+}
+
+.main-header {
+  border-bottom: 0px;
+  background: var(--bg-color);
+}
+
+nav {
+  ul.navbar-nav:first-child {
+    display: none;
+  }
+}
+
+
+.content-wrapper {
+  background: var(--bg-color);
+}
+
+.content-header {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.main-sidebar {
+  padding-top: 1.4rem; 
+}
+
+.sidebar-custom {
+
+  background-color: var(--side-color);
+
+  a.brand-link {
+    display:none;
+  }
+
+  .sidebar {
+
+
+    li.nav-item {
+
+      padding-bottom: 0.5rem;
+
+      &:hover a.nav-link {
+        color:#48596d;
+        background-color: #d2d2d2;
+
+
+      }
+
+      a.nav-link {
+        color: $main_color;
+
+        &.active {
+          color: #d2d2d2;
+          background-color: $main_color;
+        }
+      }
+
+    }
+
+  }
+
+  
+
+}

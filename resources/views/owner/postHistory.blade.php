@@ -15,7 +15,7 @@
     <table id="history_table" class="table table-striped table-bordered" style="table-layout:fixed;">
       <thead>
         <tr>
-          @foreach (["参照","状態","配信日時","内容","画像","エラー"] as $col)
+          @foreach (["詳細","状態","配信日時","内容","画像","エラー"] as $col)
           <th class="text-center">{{$col}}</th>
           @endforeach
         </tr>
@@ -29,7 +29,8 @@
               <form action="{{route('owner.history.info')}}" method="get">
                 <button type="submit" class="btn btn_show">
                   <input type="hidden" name="history_id" value={{$post->id}}>
-                  <i class="fas fa-eye text-muted"></i>
+                  <i class="fas fa-fw fa-info-circle text-muted"></i>
+                  {{-- <i class="fas fa-eye text-muted"></i> --}}
                 </button>
               </form>
             </td>

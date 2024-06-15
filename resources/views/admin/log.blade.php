@@ -46,9 +46,6 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('plugins/toastr/css/2.1.4/toastr.min.css')}}">
 <link rel="stylesheet" href="{{ asset('build/assets/log.css')}}">
-{{-- <link rel="stylesheet" href="{{ asset('build/assets/component.min.css')}}"> --}}
-{{-- @vite(['resources/sass/component.scss']) --}}
-
 <style>
 </style>
 
@@ -60,7 +57,6 @@
   <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('plugins/toastr/js/2.1.4/toastr.min.js')}}"></script>
-  {{-- @vite(['resources/js/component.js']) --}}
 
   <script>
   @if (isset($error_flushMsg))
@@ -82,9 +78,6 @@
       columnDefs:[
         { targets:0, width:"10%"}
       ],
-      // drawCallback: function(){
-      //   $(".dataTables_info").appendTo("#store_table_wrapper>.row:first-of-type>div:first-of-type");
-      // },
     });
   });
   </script>

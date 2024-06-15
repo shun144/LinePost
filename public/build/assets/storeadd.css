@@ -101,6 +101,36 @@ table td.omit_text {
     margin-bottom: 0.5rem;
   }
 }
+.custom-form-area {
+  padding-bottom: 2rem;
+}
+.custom-form-area .form-group {
+  margin-bottom: 2.5rem;
+}
+.custom-form-area .form-group:last-child {
+  margin-bottom: 0px;
+}
+.custom-form-area label {
+  margin-bottom: 0.1rem;
+  color: #666;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area small {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-form-area .form-control {
+  border-radius: 0%;
+}
+.custom-form-area img {
+  max-width: 50%;
+  max-height: 18rem;
+  border: 1px solid #dadada;
+}
+
 .card-custom .card-header {
   background-color: #394656;
   color: #fff;
@@ -132,7 +162,8 @@ table td.omit_text {
 
 .storeadd {
   width: 60%;
-  margin: 0.6rem auto 0;
+  margin: 0.6rem auto 0rem;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -140,35 +171,42 @@ table td.omit_text {
     width: 99%;
   }
 }
-.form-group {
-  margin-bottom: 2.2rem;
-}
-.form-group:last-child {
-  margin-bottom: 0px;
+.btn-back-area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1rem;
 }
 
-.card {
-  --btn-color: rgb(4, 161, 4);
+@media screen and (max-width: 480px) {
+  .btn-back-area {
+    margin-bottom: 0.8rem;
+  }
 }
-.card .btn {
+.btn-add-store {
+  --btn-color: rgb(4, 161, 4);
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
-  padding: 10px;
+  padding: 0.7rem 2.8rem;
+  letter-spacing: 6px;
   font-weight: bold;
   border: 2px solid var(--btn-color);
   background: var(--btn-color);
   color: #fff;
+  font-size: 1.1rem;
   transition: 0.5s;
   opacity: 0.9;
 }
-.card .btn:hover {
+.btn-add-store:hover {
   color: var(--btn-color);
   background: #fff;
 }
+
 @media screen and (max-width: 480px) {
-  .card .btn {
-    font-size: 0.8rem;
-    padding: 8px;
+  .btn-add-store {
+    font-size: 1rem;
+    padding: 0.5rem 1.9rem;
   }
-}/*# sourceMappingURL=storeadd.css.map */
+}

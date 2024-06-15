@@ -19,8 +19,8 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
-        // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
-    // 店舗一覧表示
+    // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
+    // ログファイル一覧表示
     // /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_
     public function viewLog()
     {
@@ -28,27 +28,14 @@ class AdminController extends Controller
 
             $path= public_path('logs');
             $logFiles = \File::files($path);
+            
+            if (count($logFiles) == 0) {
+                return view('admin.log');
+            }
+
             $logFiles = str_replace(public_path(''), url(''),  $logFiles);
             rsort($logFiles);
 
-            // dd($logFiles);
-
-            // dd(gettype($logFiles));
-            // $stores = DB::table('stores')
-            // ->select(
-            //     'stores.id as store_id',
-            //     'stores.name',
-            //     'stores.url_name',
-            //     'users.id as user_id',
-            //     'users.login_id',
-            //     'stores.client_id',
-            //     'stores.client_secret',
-            // )
-            // ->join('users','users.store_id','=','stores.id')
-            // ->where('users.role','owner')
-            // ->whereNull('stores.deleted_at')
-            // ->latest('stores.created_at')
-            // ->get();
             return view('admin.log', compact('logFiles'));
         }
         catch (\Exception $e) {
