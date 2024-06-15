@@ -1,7 +1,6 @@
 /.phpunit.cache
 /node_modules
 /public/hot
-/public/storage/owner
 /storage
 /vendor
 .env
@@ -20,4 +19,6 @@ server.code-workspace
 *.log
 *.sqlite
 *.css.map
-/public/storage/owner/image/template/*.png
+/public/storage/owner/**
+!/public/storage/owner/**/
+!/public/storage/owner/**/.gitkeep
